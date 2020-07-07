@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>BCI-EEG脑电数据处理 | MiChong的🏡</title><meta name="description" content="脑电波（Electroencephalogram,EEG）是一种使用电生理指标记录大脑活动的方法，大脑在活动时，大量神经元同步发生的突触后电位经总和后形成的。它记录大脑活动时的电波变化，是脑神经细胞的电生理活动在大脑皮层或头皮表面的总体反映。脑机接口（BCI），是一种通过检测中枢神经系统活动并将其转化为人工输出，来替代、修复、增强、补充或者改善中枢神经系统的正常输出，从而改变中枢神经系统与内外环境之间的交互作用的技术。"><meta name="keywords" content="BCI,EEG,ICA"><meta name="author" content="MiChong,qjzxzxd@gmail.com"><meta name="copyright" content="MiChong"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="BCI-EEG脑电数据处理"><meta name="twitter:description" content="脑电波（Electroencephalogram,EEG）是一种使用电生理指标记录大脑活动的方法，大脑在活动时，大量神经元同步发生的突触后电位经总和后形成的。它记录大脑活动时的电波变化，是脑神经细胞的电生理活动在大脑皮层或头皮表面的总体反映。脑机接口（BCI），是一种通过检测中枢神经系统活动并将其转化为人工输出，来替代、修复、增强、补充或者改善中枢神经系统的正常输出，从而改变中枢神经系统与内外环境之间的交互作用的技术。"><meta name="twitter:image" content="https://ae01.alicdn.com/kf/H8c31c92bb6b04046b45d797780cff3787.jpg"><meta property="og:type" content="article"><meta property="og:title" content="BCI-EEG脑电数据处理"><meta property="og:url" content="https://www.buildworld.cn/2020/07/07/BCI-EEG%E8%84%91%E7%94%B5%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"><meta property="og:site_name" content="MiChong的🏡"><meta property="og:description" content="脑电波（Electroencephalogram,EEG）是一种使用电生理指标记录大脑活动的方法，大脑在活动时，大量神经元同步发生的突触后电位经总和后形成的。它记录大脑活动时的电波变化，是脑神经细胞的电生理活动在大脑皮层或头皮表面的总体反映。脑机接口（BCI），是一种通过检测中枢神经系统活动并将其转化为人工输出，来替代、修复、增强、补充或者改善中枢神经系统的正常输出，从而改变中枢神经系统与内外环境之间的交互作用的技术。"><meta property="og:image" content="https://ae01.alicdn.com/kf/H8c31c92bb6b04046b45d797780cff3787.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = '1'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://www.buildworld.cn/2020/07/07/BCI-EEG%E8%84%91%E7%94%B5%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"><link rel="next" title="BigData-消息队列框架Apache Kafka入门、原理解析" href="https://www.buildworld.cn/2020/07/02/BigData-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%A1%86%E6%9E%B6Apache-Kafka/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  isHome: false,
+  isPost: true
+  
+}</script><meta name="generator" content="Hexo 4.2.0"></head><body><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">MiChong的🏡</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fa fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 歌单</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 影单</span></a></li><li><a class="site-page" href="/photos/"><i class="fa-fw fa fa-picture-o"></i><span> 图集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fa fa-rocket"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-commenting"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/header.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">59</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">55</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">24</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fa fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 歌单</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 影单</span></a></li><li><a class="site-page" href="/photos/"><i class="fa-fw fa fa-picture-o"></i><span> 图集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fa fa-rocket"></i><span> 工具</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-commenting"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#EEG脑电数据处理"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">EEG脑电数据处理</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#十大基本步骤"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">十大基本步骤</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#1、-定位通道位置"><span class="toc_mobile_items-number">2.1.</span> <span class="toc_mobile_items-text">1、 定位通道位置</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#2、删除无用通道"><span class="toc_mobile_items-number">2.2.</span> <span class="toc_mobile_items-text">2、删除无用通道</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#3、滤波"><span class="toc_mobile_items-number">2.3.</span> <span class="toc_mobile_items-text">3、滤波</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#4、分段"><span class="toc_mobile_items-number">2.4.</span> <span class="toc_mobile_items-text">4、分段</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#5、基线校正"><span class="toc_mobile_items-number">2.5.</span> <span class="toc_mobile_items-text">5、基线校正</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#6、重参考"><span class="toc_mobile_items-number">2.6.</span> <span class="toc_mobile_items-text">6、重参考</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#7、降低采样率"><span class="toc_mobile_items-number">2.7.</span> <span class="toc_mobile_items-text">7、降低采样率</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#8、插值坏导"><span class="toc_mobile_items-number">2.8.</span> <span class="toc_mobile_items-text">8、插值坏导</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#9、独立主成分分析"><span class="toc_mobile_items-number">2.9.</span> <span class="toc_mobile_items-text">9、独立主成分分析</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#10、剔除坏段"><span class="toc_mobile_items-number">2.10.</span> <span class="toc_mobile_items-text">10、剔除坏段</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#EEG脑电数据处理"><span class="toc-number">1.</span> <span class="toc-text">EEG脑电数据处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十大基本步骤"><span class="toc-number">2.</span> <span class="toc-text">十大基本步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、-定位通道位置"><span class="toc-number">2.1.</span> <span class="toc-text">1、 定位通道位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、删除无用通道"><span class="toc-number">2.2.</span> <span class="toc-text">2、删除无用通道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、滤波"><span class="toc-number">2.3.</span> <span class="toc-text">3、滤波</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、分段"><span class="toc-number">2.4.</span> <span class="toc-text">4、分段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、基线校正"><span class="toc-number">2.5.</span> <span class="toc-text">5、基线校正</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、重参考"><span class="toc-number">2.6.</span> <span class="toc-text">6、重参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、降低采样率"><span class="toc-number">2.7.</span> <span class="toc-text">7、降低采样率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、插值坏导"><span class="toc-number">2.8.</span> <span class="toc-text">8、插值坏导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、独立主成分分析"><span class="toc-number">2.9.</span> <span class="toc-text">9、独立主成分分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、剔除坏段"><span class="toc-number">2.10.</span> <span class="toc-text">10、剔除坏段</span></a></li></ol></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(https://ae01.alicdn.com/kf/H4b08c64bb68946049984436c74d58205Z.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">BCI-EEG脑电数据处理</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 发表于 2020-07-07<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> 更新于 2020-07-07</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E8%84%91%E6%9C%BA%E4%BA%A4%E4%BA%92/">脑机交互</a></span><div class="post-meta-wordcount"><div class="post-meta-pv-cv"><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>阅读量:</span><span id="busuanzi_value_page_pv"></span></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h2 id="EEG脑电数据处理"><a href="#EEG脑电数据处理" class="headerlink" title="EEG脑电数据处理"></a>EEG脑电数据处理</h2><blockquote>
+<p>脑电波（Electroencephalogram,EEG）是一种使用电生理指标记录大脑活动的方法，大脑在活动时，大量神经元同步发生的突触后电位经总和后形成的。它记录大脑活动时的电波变化，是脑神经细胞的电生理活动在大脑皮层或头皮表面的总体反映。脑机接<br>口（BCI），是一种通过检测中枢神经系统活动并将其转化为人工输出，来替代、修复、增强、补充或者改善中枢神经系统的正常输出，从而改变中枢神经系统与内外环境之间的交互作用的技术。</p>
+</blockquote>
+<blockquote>
+<p>来自<strong>[脑机接口社区]</strong>公众号</p>
+</blockquote>
+<h2 id="十大基本步骤"><a href="#十大基本步骤" class="headerlink" title="十大基本步骤"></a>十大基本步骤</h2><h3 id="1、-定位通道位置"><a href="#1、-定位通道位置" class="headerlink" title="1、 定位通道位置"></a>1、 定位通道位置</h3><blockquote>
+<p>将EEG数据加载进eeglab之后，<code>eeglab</code>能够读取到的仅仅是每一个通道的名称和数值，但是它并不知道这个通道是位于头皮上的什么地方，因此我们需要加载进一个跟记录数据时相匹配的通道位置信息</p>
+</blockquote>
+<blockquote>
+<p>eeglab中默认的文件是 <strong>standard-10-5-cap385(<a href="https://mp.weixin.qq.com/s?__biz=MzU5NjU4OTc4MA==&mid=2247484433&idx=1&sn=1d4bba3c10192920d8255d899a6d8f28&chksm=fe6129aac916a0bc648142cb3a53c0679cd1c03a21c20553bba0b4858c613cd6dd0e73e8b727&scene=21#wechat_redirect" target="_blank" rel="noopener">国际10-5系统</a>)</strong></p>
+</blockquote>
+<h3 id="2、删除无用通道"><a href="#2、删除无用通道" class="headerlink" title="2、删除无用通道"></a>2、删除无用通道</h3><blockquote>
+<p>在<strong>EEGLAB</strong>中预处理数据的时候，使用<code>ICA</code>方式去除眼电成分，这种方式可以不用眼电通道数据的参与就可以进行。</p>
+</blockquote>
+<h3 id="3、滤波"><a href="#3、滤波" class="headerlink" title="3、滤波"></a>3、滤波</h3><blockquote>
+<p>滤波分为<code>高通滤波</code>，<code>低通滤波</code>，<code>带通滤波</code>和<code>凹陷滤波</code>。</p>
+</blockquote>
+<ul>
+<li><strong>高通滤波</strong>是指，高于某个频率的信号可以通过，而低于这个频率的信号会被衰减过滤掉。而<strong>低通滤波</strong>则相反，指的是低于某个频率的信号可以通过，而高于这个频率的信号则相反。所以，在输入数值的时候，高通滤波要输入的是一个较小的数字，而低通滤波则是输入一个较大的数字。这可能跟我们的第一反应有点相悖。因此，也可以用它们的英文叫法来辨别，高通<code>high-pass</code>，低通<code>low-pass</code>，英文看起来就更为直观了。</li>
+<li><strong>带通滤波</strong>，指的是在某个频率段范围内的信号可以通过，而这个频率段范围以外的信号会被衰减过滤掉，就相当于同时做了高通滤波和低通滤波。</li>
+<li><strong>凹陷滤波</strong>，指的是在某个频率范围内的信号会被衰减过滤掉，而这个频率范围以外的信号会被保留下来。这个操作通常是用来去除50Hz市电的干扰。我国的50Hz，因此在收集到的信号中，会有一个非常强烈的50Hz频段的信号存在，这就可以用凹陷滤波来去掉。</li>
+</ul>
+<h3 id="4、分段"><a href="#4、分段" class="headerlink" title="4、分段"></a>4、分段</h3><blockquote>
+<p>数据打上<strong>mark</strong>，将数据切分为一段一段，在这些范围以外的的数据，直接去除。</p>
+<p>一般的ERP分段在事件前200毫秒到事件后1000毫秒这个时间段就足够了，因为几乎所有的ERP成分，都是在1秒以内产生的。但是如果后期还要做时频分析的话，则需要将分段时间拉长，扩大到事件前1秒到事件后2秒这个时间段内，因为时频分析的算法，要求数据要有一定的长度。</p>
+</blockquote>
+<h3 id="5、基线校正"><a href="#5、基线校正" class="headerlink" title="5、基线校正"></a>5、基线校正</h3><blockquote>
+<p>被试被认为是处于一个相对平静的状态，此时的脑电活动代表了一个平静状态下的脑电活动，将这段时间内的脑电活动当做成一个基线。</p>
+<p>一般来说，都是以分段中，事件之前这段时间来作为基线的，比如分段为-200毫秒到1000毫秒，那就将所有的数据，减去前200毫米以内数据的均值。</p>
+<p>基线校正的第二个作用是<strong>防止数据漂移带来的影响</strong>。有时候因为某些原因，我们采集到的数据，会呈现一个逐渐缓慢向上漂移的趋势，而在分完段之后，由于向上飘的影响，每一段数据的起点将不在同一个地方，也会使得这段数据的绝对波幅变高。而基线校正就可以校正这种漂移带来的影响，让每一段数据都拥有一个差不多的起点。</p>
+</blockquote>
+<h3 id="6、重参考"><a href="#6、重参考" class="headerlink" title="6、重参考"></a>6、重参考</h3><blockquote>
+<ul>
+<li>首先要解释的是参考的定义。我们看到采集之后的数据是一个个的数值，但这个数值是什么意思呢，就是电极所在位置跟参考电极之间的电位差。</li>
+<li>一般在脑电记录的时候会采用的参考电极有鼻尖参考，cz或头顶中央参考，还有单侧乳突参考，乳突就是耳朵后面一小块突起的区域。我们所看到的每个通道的数值，其实就是指这个通道跟参考通道之间的电位差。</li>
+<li>在分析数据的时候，有时候我们会想要转换参考点的位置。因为不同位置的参考，会对数据造成一定的影响。比如记录时采用的是cz或头顶中央参考，那么自然地，距离cz点较近的电极点，记录到的电位差会非常小，而离得远的电极记录到的电位差就自然会大一点，这种大与小的差异，并不是由认知活动产生的，而是由记录方式产生的。又比如，单侧乳突参考，那脑袋左边的电极点跟右边的电极点，也会存在着记录方式不同产生的电位差不同。</li>
+<li>常用的一些参考位置有双侧乳突平均参考，指将两个乳突数据的平均值作为参考数据，或者是全脑平均参考，指的是将全脑所有数据的均值作为参考数据的方法，不过使用全脑平均参考的时候要注意，眼电数据不要纳入其中，因为眼电数据的波动起伏非常大，很容易对数据造成比较大的干扰。</li>
+</ul>
+</blockquote>
+<h3 id="7、降低采样率"><a href="#7、降低采样率" class="headerlink" title="7、降低采样率"></a>7、降低采样率</h3><blockquote>
+<ul>
+<li>采样率的单位是Hz，指的是一秒内要记录多少个数据点的意思，比如原始数据的采样率是1000Hz的话，就是代表一秒内有1000个数据点。</li>
+<li>在后期分析的时候，我们有时候会想要降低采样率，比如降到500Hz或者250Hz。这样做最大的好处其实就是减小数据量，以提高计算速度，没有其他的作用了。所以这一步并不是必须的。</li>
+<li>但降低采样率需要注意两点，<strong>一是降低采样率要在滤波之后</strong>。因为降低采样率会使我们丢失高频信息，使高频信息变得扭曲，所以最好在保留了我们感兴趣波段之后再去降低采样率，这样可以保证信号最大程度不会失真。<strong>二是有一个采样定理，</strong>理论上来说，我们的采样率必须是我们想要分析的波段的两倍，比如我们想要分析60Hz的波，那数据采样率为120Hz就足够了。实际上，建议采样率最好在分析波段的三到四倍。</li>
+</ul>
+</blockquote>
+<h3 id="8、插值坏导"><a href="#8、插值坏导" class="headerlink" title="8、插值坏导"></a>8、插值坏导</h3><blockquote>
+<ul>
+<li>在做完上述这些处理之后，可以保存一下数据。因为在这之前的操作，是每个被试都需要做的基础操作，后期我们可以通过代码来实现批处理。而在这之后的操作，是需要根据每个被试的具体情况具体分析去处理的，因此只能一个个做，不能进行批处理。</li>
+<li>从这一步开始可以说是真正的去除伪迹的过程了。去伪迹大体分为两种，<code>横向操作</code>和<code>纵向操作</code>，<strong>横向即对通道进行校正操作，对数据不好的导联进行插值处理，纵向是指挑出数据不好的trials，删除掉。</strong>建议是先横向处理后再纵向剔除，尽量保留下更多的trials数。</li>
+<li>EEGLAB中插值坏导有两种方式，<strong>一种是以某通道周围几个通道的数据的平均值，来替代这个通道的数据，这种直接通过代码实现即可。</strong> <strong>另外一种是EEGLAB里内置的一种算法实现</strong>，具体换算是什么过程我也不太清楚，但是我问过贾会宾老师，他是推荐使用第二种方法。原因在于，我们记录的是头皮脑电，头是一个球体，因此直接用周围数据的均值来代替这种方法有点粗糙，而EEGLAB内置的方法则会考虑到容积传导效应，以及近的点和远的点贡献的权重不同来进行插值，因此会更加有效。</li>
+</ul>
+</blockquote>
+<h3 id="9、独立主成分分析"><a href="#9、独立主成分分析" class="headerlink" title="9、独立主成分分析"></a>9、独立主成分分析</h3><p><strong><a href="https://mp.weixin.qq.com/s?__biz=MzU5NjU4OTc4MA==&mid=2247486858&idx=1&sn=abb9ba31da1264ca1f2d5a690ee04b4d&chksm=fe612031c916a927a710161d50ac9e5c8969b02141c5952c739e4689d61f59bbdf8e391f7186&scene=21#wechat_redirect" target="_blank" rel="noopener">如何识别ICA成分</a></strong></p>
+<blockquote>
+<p>这是一个很有用但也很难的方法，我并不是十分清楚它的原理，只能大概理解，也只能大概描述一下。前面说过，我们记录到的是头皮脑电，脑电帽上划出了一个个的点来表示位置，但是我们在<code>FPz</code>点记录到的数据，就真的是<code>FPz</code>点这个位置头皮下方的区域所产生的电活动？不一定。做过实验的都知道，眨眼会产生影响，左右看会产生影响，帽子戴得太紧导致肌肉紧张也会产生影响，还有左右的<code>FP1，FP2</code>处产生的电活动也会影响到<code>FPz</code>，甚至在离它最远的Oz点下方产生的电活动，也有可能对前方<code>FPz</code>点产生微弱的影响。因为真正的电活动产生于头皮下方颅骨内部，它经过了这么一层又一层的传播之后，不同源的电活动肯定会相互影响，从而导致某个记录点记录到的数据，混合了很多不同成分的电活动。而独立主成分分析，就是要对记录点的数据做一个逆运算，把每个记录点的数据， 分解成一个又一个的成分组成。然后我们再从中剔除掉伪迹成分，比如眨眼的成分，肌肉紧张的成分等，从而得到一个相对干净的数据。</p>
+</blockquote>
+<h3 id="10、剔除坏段"><a href="#10、剔除坏段" class="headerlink" title="10、剔除坏段"></a>10、剔除坏段</h3><blockquote>
+<ul>
+<li>预处理到了这一步，已经接近于完成了。最后一个步骤就是要剔除掉波幅超过100微幅的trial(要求严格一点也可以定位80)，因为波幅起伏这么大的活动，已经不是由认知活动引起的了，肯定是由于其他的动作引起的，所以可以直接剔除掉。</li>
+<li>这一步操作一定要在插值坏导和ICA去除眼电成分之后再做，因为有可能被试眨眼比较频繁，那这么操作下来，有可能就需要删掉接近一半的trials数了，删掉的trials数太多，这个数据也就废了。所以要将它留到最后一步才做，同时，这个操作也能用来检查我们前两步操作是否足够有效。</li>
+</ul>
+</blockquote>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:qjzxzxd@gmail.com">MiChong</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.buildworld.cn/2020/07/07/BCI-EEG%E8%84%91%E7%94%B5%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">https://www.buildworld.cn/2020/07/07/BCI-EEG%E8%84%91%E7%94%B5%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.buildworld.cn">MiChong的🏡</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/BCI/">BCI    </a><a class="post-meta__tags" href="/tags/EEG/">EEG    </a><a class="post-meta__tags" href="/tags/ICA/">ICA    </a></div><div class="post_share"><div class="social-share" data-image="https://ae01.alicdn.com/kf/H8c31c92bb6b04046b45d797780cff3787.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/07/02/BigData-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%A1%86%E6%9E%B6Apache-Kafka/"><img class="next_cover lazyload" data-src="https://file.buildworld.cn/img/20200702193913.png" onerror="onerror=null;src='/img/404.jpg'"><div class="label">下一篇</div><div class="next_info"><span>BigData-消息队列框架Apache Kafka入门、原理解析</span></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/06/12/BCI-Python-EEG工具库MNE/" title="BCI--Python-EEG工具库MNE"><img class="relatedPosts_cover lazyload"data-src="https://ae01.alicdn.com/kf/H32f1a2189cf54b20a201315213d6c44fa.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-06-12</div><div class="relatedPosts_title">BCI--Python-EEG工具库MNE</div></div></a></div><div class="relatedPosts_item"><a href="/2020/06/10/BCI-脑电基础整理/" title="BCI--脑电基础整理"><img class="relatedPosts_cover lazyload"data-src="https://file.buildworld.cn/img/ec5a290b7250a197b6c0df8fadf474dd_f203db60b3fe49358114eecab1bc755e.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-06-10</div><div class="relatedPosts_title">BCI--脑电基础整理</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
+var verify = false == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'uP2eHTa46LgqECzDMDE6P7zl-MdYXbMMI',
+  appKey:'GkCLsvUt4VnOXMJz69EeCqEY',
+  placeholder:'Please leave your footprints',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'zh-cn',
+  recordIP: true
+});</script></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2020 By MiChong</div><div class="framework-info"><span>驱动 </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text"><script src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><script src="https://player.lmih.cn/player/js/player.js" id="myhk" key="159272785049" m="1"></script><p><a href="//www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"><img src="https://ae01.alicdn.com/kf/H4484324da9f8498e943e64b4cc0e602dZ.png" style="width:75px;"></a></p></div><div class="icp"><a><img class="icp-icon" src="/img/icp.png"><span>皖ICP备20006548号-1</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon_piao" mobile="false" src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/piao.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/canvas-nest.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@3/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/ClickShowText.js"></script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
