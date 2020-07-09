@@ -104,7 +104,7 @@ function activateLightMode(){
 <h4 id="Pre-trained-models"><a href="#Pre-trained-models" class="headerlink" title="Pre-trained models"></a>Pre-trained models</h4><ul>
 <li><a href="https://blog.csdn.net/MrCharles/article/details/80360461" target="_blank" rel="noopener">https://blog.csdn.net/MrCharles/article/details/80360461</a>  （一）中的第五点</li>
 </ul>
-<p><a href="https://ae01.alicdn.com/kf/Hbea52004ac754ea7a7883812f23fade2N.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt data-src="https://ae01.alicdn.com/kf/Hbea52004ac754ea7a7883812f23fade2N.png" class="lazyload" title></a></p>
+<p><a href="https://ae01.alicdn.com/kf/Hbea52004ac754ea7a7883812f23fade2N.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="https://ae01.alicdn.com/kf/Hbea52004ac754ea7a7883812f23fade2N.png" class="lazyload"></a></p>
 <p>模型下载链接：<a href="https://pan.baidu.com/s/1aiSq7wGpdHIe6MUKPnXgrA" target="_blank" rel="noopener">https://pan.baidu.com/s/1aiSq7wGpdHIe6MUKPnXgrA</a> 密码：4dcn</p>
 <blockquote>
 <p>20170512-110547（MS-Celeb-1M数据集训练的模型文件，微软人脸识别数据库，名人榜选择前100万名人，搜索引擎采集每个名人100张人脸图片。预训练模型准确率0.993+-0.004）</p>
@@ -129,7 +129,7 @@ function activateLightMode(){
 <ul>
 <li>pycharm中运行记得修改成下面这样</li>
 </ul>
-<p><a href="https://ae01.alicdn.com/kf/H8bfbd1bb2f2b474681a4a92b42731c65U.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt data-src="https://ae01.alicdn.com/kf/H8bfbd1bb2f2b474681a4a92b42731c65U.png" class="lazyload" title></a></p>
+<p><a href="https://ae01.alicdn.com/kf/H8bfbd1bb2f2b474681a4a92b42731c65U.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="https://ae01.alicdn.com/kf/H8bfbd1bb2f2b474681a4a92b42731c65U.png" class="lazyload"></a></p>
 <h4 id="3、评估预训练模型的准确率"><a href="#3、评估预训练模型的准确率" class="headerlink" title="3、评估预训练模型的准确率"></a>3、评估预训练模型的准确率</h4><h5 id="1）、模型下载"><a href="#1）、模型下载" class="headerlink" title="1）、模型下载"></a>1）、模型下载</h5><blockquote>
 <p>facenet提供了两个预训练模型，分别是基于CASIA-WebFace和MS-Celeb-1M人脸库训练的，不过需要去谷歌网盘下载，这里给其中一个模型的百度网盘的链接：</p>
 </blockquote>
@@ -139,7 +139,7 @@ function activateLightMode(){
 </blockquote>
 <h5 id="2）、运行脚本"><a href="#2）、运行脚本" class="headerlink" title="2）、运行脚本"></a>2）、运行脚本</h5><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 运行脚本,同样的，目录改为自己的</span></span><br><span class="line">data\lfw\lfw_160：D:\\Python\\Work\\face-system\\face-net\\facenet-master\\data\\ifw\\ifw_160</span><br><span class="line">src\models\20180408-102900：D:\\Python\\Work\\face-system\\face-net\\facenet-master\\data\\models\\20180408-102900</span><br><span class="line"></span><br><span class="line">Python src\validate_on_lfw.py data\lfw\lfw_160 src\models\20180408-102900</span><br></pre></td></tr></table></figure></div>
 <ul>
-<li>安装网络上面的做法会出现错误，是应为data/pairs.txt读取不到，所以需要在运行脚本上面加上`–lfw_pairs=txt的地址<br><a href="https://ae01.alicdn.com/kf/H9f8ff6240a024da4821d07c405654677G.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt data-src="https://ae01.alicdn.com/kf/H9f8ff6240a024da4821d07c405654677G.png" class="lazyload" title></a></li>
+<li>安装网络上面的做法会出现错误，是应为data/pairs.txt读取不到，所以需要在运行脚本上面加上`–lfw_pairs=txt的地址<br><a href="https://ae01.alicdn.com/kf/H9f8ff6240a024da4821d07c405654677G.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="https://ae01.alicdn.com/kf/H9f8ff6240a024da4821d07c405654677G.png" class="lazyload"></a></li>
 </ul>
 <div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">运行脚本,同样的，目录改为自己的</span><br><span class="line"></span><br><span class="line">data\lfw\lfw_160：D:\\Python\\Work\\face-system\\face-net\\facenet-master\\data\\ifw\\ifw_160</span><br><span class="line">src\models\20180408-102900：D:\\Python\\Work\\face-system\\face-net\\facenet-master\\data\\models\\20180408-102900</span><br><span class="line">data/pairs.txt：D:\\Python\\Work\\face-system\\face-net\\facenet-master\\data\\pairs.txt</span><br><span class="line"></span><br><span class="line">Python src\validate_on_lfw.py data\lfw\lfw_160 src\models\20180408-102900 --lfw_pairs=data/pairs.txt</span><br></pre></td></tr></table></figure></div>
 
@@ -149,7 +149,7 @@ function activateLightMode(){
 <li><p>解决方案</p>
 <p>1.把Tensorflow换为1.7版本的；</p>
 <p>2.在<code>facenet.py</code>代码中找到<code>create_input_pipeline</code> 再添加一行语句<code>with tf.name_scope(&quot;tempscope&quot;):</code> 就可以完美解决（貌似Tensorflow 1.10及以上版本才修复这个bug）。</p>
-<p><a href="https://ae01.alicdn.com/kf/H2eb7b8dc5d984ecca4f52703467fb45b0.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt data-src="https://ae01.alicdn.com/kf/H2eb7b8dc5d984ecca4f52703467fb45b0.png" class="lazyload" title></a></p>
+<p><a href="https://ae01.alicdn.com/kf/H2eb7b8dc5d984ecca4f52703467fb45b0.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="https://ae01.alicdn.com/kf/H2eb7b8dc5d984ecca4f52703467fb45b0.png" class="lazyload"></a></p>
 </li>
 <li><p>运行结果，可以看出，模型的精度高达99.7%</p>
 <a href="https://ae01.alicdn.com/kf/Hbe49c52d5942488fbed1296a0514254cW.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="undefined" class="fancybox"><img style="zoom: 80%;" data-src="https://ae01.alicdn.com/kf/Hbe49c52d5942488fbed1296a0514254cW.png" class="lazyload"></a>
@@ -161,12 +161,12 @@ function activateLightMode(){
 </blockquote>
 <div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 参数：第一个参数为预模型的地址，第二个和第三个参数为图片的地址</span></span><br><span class="line">python src\compare.py </span><br><span class="line">D:\\Python\\Work\\face-system\\face-net\\facenet-master\\data\\models\\20180408-102900</span><br><span class="line">D:\\Python\\Work\\face-system\\face-net\\facenet-master\\data\\ifw\\ifw_160\\Aaron_Eckhart\\Aaron_Eckhart_0001.png</span><br><span class="line">D:\\Python\\Work\\face-system\\face-net\\facenet-master\\data\\ifw\\ifw_160\\Aaron_Guiel\\Aaron_Guiel_0001.png</span><br></pre></td></tr></table></figure></div>
 <ul>
-<li><p>pycharm中运行记得修改成下面这样:<br><a href="https://ae01.alicdn.com/kf/Ha03a9c0a688b4b7fa4352fe0ab5f59270.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt data-src="https://ae01.alicdn.com/kf/Ha03a9c0a688b4b7fa4352fe0ab5f59270.png" class="lazyload" title></a></p>
+<li><p>pycharm中运行记得修改成下面这样:<br><a href="https://ae01.alicdn.com/kf/Ha03a9c0a688b4b7fa4352fe0ab5f59270.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="https://ae01.alicdn.com/kf/Ha03a9c0a688b4b7fa4352fe0ab5f59270.png" class="lazyload"></a></p>
 </li>
 <li><p>运行结果如下：</p>
 </li>
 </ul>
-<p><a href="https://ae01.alicdn.com/kf/H1ee064785b9a455b88ec83ccd54999d06.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt data-src="https://ae01.alicdn.com/kf/H1ee064785b9a455b88ec83ccd54999d06.png" class="lazyload" title></a></p>
+<p><a href="https://ae01.alicdn.com/kf/H1ee064785b9a455b88ec83ccd54999d06.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="https://ae01.alicdn.com/kf/H1ee064785b9a455b88ec83ccd54999d06.png" class="lazyload"></a></p>
 <h4 id="5、GPU内存溢出问题，已经解决"><a href="#5、GPU内存溢出问题，已经解决" class="headerlink" title="5、GPU内存溢出问题，已经解决"></a>5、GPU内存溢出问题，已经解决</h4><blockquote>
 <p>在<code>detect_face.py</code>中加入下面的配置，防止出现GPU内存不足报错，放在代码靠前的位置</p>
 </blockquote>
